@@ -9,13 +9,14 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class MainView2 extends View {
+public class MainView extends View {
     public final int FIRST=1;
     public final int SECOND=2;
+    public final int THIRD=3;
 
     int state;
 
-    public MainView2(Context context, AttributeSet attrs) {
+    public MainView(Context context, AttributeSet attrs) {
         super(context, attrs);
         state=FIRST;
     }
@@ -31,6 +32,10 @@ public class MainView2 extends View {
             canvas.drawRect(100, 100, 300, 200, p);
         } else if (state == SECOND) {
             p.setColor(Color.RED);
+            canvas.drawARGB(255, 255, 255, 0);
+            canvas.drawRect(100, 100, 300, 200, p);
+        } else if (state == THIRD) {
+            p.setColor(Color.YELLOW);
             canvas.drawARGB(255, 255, 255, 0);
             canvas.drawRect(100, 100, 300, 200, p);
         } else {
