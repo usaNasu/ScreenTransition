@@ -2,13 +2,64 @@ package jp.ac.shohoku.HGUREMETAL.screentransition;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.onClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity{
+    int count =1;
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        sentContentView(R.layout.activity_view);
+        // ボタンを押したときにイベントを取得できるようにする
+        Button button1 = (Button) findViewById(R.id.button1);
+        button1.setOnClickListener(new onClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(count == 1){
+                    // 変更したいレイアウトを取得する
+                    LinearLayout layout = (LinearLayout) findViewById(R.id.linearlayout1);
+                    // レイアウトのビューをすべて削除薄る
+                    layout.removeAllViews();
+                    // レイアウトをR.layout.sampleに変更する
+                    getLayoutInflater().inflate(R.layout.view2,layout);
+                    count = 2;
+                } else if(count == 2){
+                    LinearLayout layout = (LinearLayout) findViewById(R.id.linearlayout2);
+                    layout.removeAllViews();
+                    getLayoutInflater().inflate(R.layout.view1,layout);
+                    count = 1;
+                }
+            }
+        });
+
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public boolean onCreateOptionsMenu(Menu menu){
+       //
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // アクションバー項目のクリック処理
+        // アクションバーはボタンのクリックを自動的に処理
+        // AndroidManifest.xmlで親アクティビティを指定します。
+        int id = item.getItemId();
+
+        // NoinspectionSimplifiablelfsatement
+        if(id == R.id.action_settings){
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
