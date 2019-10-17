@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.onClickListener;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -16,10 +16,10 @@ public class MainActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        sentContentView(R.layout.activity_view);
+        setContentView(R.layout.activity_view);
         // ボタンを押したときにイベントを取得できるようにする
         Button button1 = (Button) findViewById(R.id.button1);
-        button1.setOnClickListener(new onClickListener(){
+        button1.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View v) {
                 if(count == 1){
