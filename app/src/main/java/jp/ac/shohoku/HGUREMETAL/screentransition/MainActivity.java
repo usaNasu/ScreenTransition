@@ -41,25 +41,5 @@ public class MainActivity extends Activity{
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-       //
-        getMenuInflater().inflate(R.menu.menu_main,menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // アクションバー項目のクリック処理
-        // アクションバーはボタンのクリックを自動的に処理
-        // AndroidManifest.xmlで親アクティビティを指定します。
-        int id = item.getItemId();
-
-        // NoinspectionSimplifiablelfsatement
-        if(id == R.id.action_settings){
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
